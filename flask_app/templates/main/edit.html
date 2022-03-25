@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Undead Organizer</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Piedra|Creepster|Eater|Wallpoet|Nosifer|Keania One">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class = "container">
+        <div class = "d-flex justify-content-between m-6">
+            <div>
+                <a href = "/main" class = "mx-4 text-decoration-none text-light">Back</a>
+            </div>
+            <div>
+                <a href = "/logout" class = "mx-4 text-decoration-none text-light">Logout</a>
+            </div>
+        </div>
+        <div class = "row p-3 rounded me-3 bg-secondary text-light">
+            <h2>Edit {{edit.title}}</h2>
+        </div>
+        <form action = "/main/process_edit" method = "POST" class="col-11 p-4 my-2">
+            <div class = "text-danger" role = "alert">
+                {% with messages = get_flashed_messages(category_filter=["show"]) %}
+                    {% if messages %}
+                        {% for message in messages %}
+                        <p>{{message}}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+            <div class="card p-4">
+                <div class = "form-group">
+                    <input type="hidden" name="id" value={{edit.id}}>
+                    <label class = "new_title_bootstrap my-2">Title</label>
+                    <input type="text" name="title" class="form-control" value="{{edit.title}}"></div>
+                <div class = "form-group">
+                    <label class = "new_title_bootstrap my-2">Year</label>
+                    <input type="text" name="year" class="form-control" value="{{edit.year}}"></div>
+                <div class = "form-group">
+                    <label class = "new_title_bootstrap my-2">Director</label>
+                    <input type="text" name="director" class="form-control" value="{{edit.director}}"></div>
+
+                <div class = "form-group">
+                    <label class = "new_title_bootstrap my-2">Movie/Series</label>
+                    <select name = "movie_series" class = "form-control col-2" value="{{edit.movie_series}}">
+                        <option value = "holder">{{edit.movie_series}}</option>
+                        <option value = "movie">Movie</option>
+                        <option value = "series">Series</option>
+                    </select>
+                </div>
+
+                <div class = "form-group">
+                    <label class = "new_title_bootstrap my-2">Rating (%)</label>
+                    <select name="rating" class="form-control col-1" id="selectRating" value = "{{edit.rating}}">
+                        <option value="" disabled selected>{{edit.rating}}</option>
+                    </select>
+                </div>
+
+
+                <div class = "form-group">
+                    <label class = "new_title_bootstrap my-2">IMDB Link</label>
+                    <input type="text" name="imdb_link" class="form-control" value="{{edit.imdb_link}}"></div>
+
+                    <br>
+                <input type="submit" value="Update" class="submit_button_bootstrap my-5 col-2">
+            </div>
+        </form>
+    </div>
+<script>
+var selectRatingPercent = document.getElementById("selectRating");
+var contents = "<option>{{edit.rating}}</option>";
+
+for (let i = 100; i >= 0; i--) {
+    contents += "<option>" + i + "</option>";
+}
+
+selectRatingPercent.innerHTML = contents;
+</script>
+</body>
+</html>

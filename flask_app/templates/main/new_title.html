@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Undead Organizer</title>
+    <link rel="stylesheet" href="static\css\style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Piedra|Creepster|Eater|Wallpoet|Nosifer|Keania One">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<!-- <body>
+    <div class = "wrapper">
+        <a href="/main" class = "back_button">Back</a>
+        <a href="/logout" class = "logout_button">Logout</a>
+        <h1 class = "title">Your <span style="color: red">Un</span><span style="color: #00FF19">dead</span> Organizer</h1>
+        <div class = "new_title_form_box">
+            <form action="/process_new_title" method="POST">
+                <div class = "flash_error">
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                <p>{{message}}</p>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                </div>
+                <div class = "user_input">
+                    <label>Title</label>
+                    <input type="text" name="title"></div>
+                <div class = "user_input">
+                    <label>Year</label>
+                    <input type="text" name="year"></div>
+                <div class = "user_input">
+                    <label>Director</label>
+                    <input type="text" name="director"></div>
+                <div class = "user_input">
+                    <label>Movie/Series</label>
+                    <input type="password" name="movie_series"></div>
+                <div class = "user_input">
+                    <label>Rating</label>
+                    <input type="password" name="rating"></div>
+                <div class = "user_input">
+                    <label>IMDB Link</label>
+                    <input type="text" name="imdb"></div>
+                <button class = "submit_button"><a>Submit</a></button>
+            </form>
+        </div>
+    </div>
+</body>
+</html> -->
+
+<body>
+    <div class = "container">
+        <div class = "d-flex justify-content-between m-6">
+            <div>
+                <a href = "/main" class = "mx-4 text-decoration-none text-light">Back</a>
+            </div>
+            <div>
+                <a href = "/logout" class = "mx-4 text-decoration-none text-light">Logout</a>
+            </div>
+        </div>
+        <h1 class = "title">Your <span style="color: red">Un</span><span style="color: #00FF19">dead</span> Organizer</h1>
+        <div class = "d-flex justify-content-between">
+            <form action="/process_new_title" method="POST" class="col-11 p-4 my-2">
+                <div class = "text-danger" role = "alert">
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                <p>{{message}}</p>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                </div>
+                <div class = "">
+                    <div class = "form-group">
+                        <label class = "new_title_bootstrap my-2">Title</label>
+                        <input type="text" name="title" class="form-control"></div>
+                    <div class = "form-group">
+                        <label class = "new_title_bootstrap my-2">Year</label>
+                        <input type="text" name="year" class="form-control"></div>
+                    <div class = "form-group">
+                        <label class = "new_title_bootstrap my-2">Director</label>
+                        <input type="text" name="director" class="form-control"></div>
+                </div>
+
+                <div class = "">
+                    <div class = "form-group">
+                        <label class = "new_title_bootstrap my-2">Movie/Series</label>
+                        <select name = "movie_series" class = "form-control col-2">
+                            <option value = "holder">Select Option...</option>
+                            <option value = "Movie">Movie</option>
+                            <option value = "Series">Series</option>
+                        </select>
+                    </div>
+
+                        <!-- This one is new  -->
+                    <div class = "form-group">
+                        <label class = "new_title_bootstrap my-2">Rating (%)</label>
+                        <select name="rating" class="form-control col-1" id="selectRating"></select>
+                    </div>
+                </div>
+
+                    <div class = "form-group">
+                    <label class = "new_title_bootstrap my-2">IMDB Link</label>
+                    <input type="text" name="imdb_link" class="form-control"></div>
+                <input type="submit" value="Submit" class="submit_button_bootstrap my-5">
+            </form>
+        </div>
+    </div>
+<script>
+var selectAge = document.getElementById("selectRating");
+var contents = "<option> </option>";
+
+for (let i = 100; i >= 0; i--) {
+    contents += "<option>" + i + "</option>";
+}
+
+selectAge.innerHTML = contents;
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="static\css\style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Piedra|Creepster|Eater|Wallpoet|Nosifer|Keania One">
+</head>
+<body>
+    <a href="/" class = "back_button">Back</a>
+    <h1 class = "title">Your <span style="color: red">Un</span><span style="color: #00FF19">dead</span> Organizer</h1>
+    <div class = "sub_title">Login</div>
+    <div class = "signup_login_form_box">
+        <form action="/process_login" method="POST">
+            <div class = "flash_error">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p>{{message}}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+            <div class = "user_input">
+                <label>Email</label>
+                <input type="text" name="email"></div>
+            <div class = "user_input">
+                <label>Password</label>
+                <input type="password" name="password"></div>
+            <button class = "submit_button"><a>Submit</a></button>
+        </form>
+    </div>
+</body>
+</html>

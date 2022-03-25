@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Undead Organizer</title>
+    <link rel="stylesheet" href="static\css\style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Piedra|Creepster|Eater|Wallpoet|Nosifer|Keania One">
+</head>
+<body>
+    <div class = "wrapper">
+        <a href="/" class = "back_button">Back</a>
+        <h1 class = "title">Your <span style="color: red">Un</span><span style="color: #00FF19">dead</span> Organizer</h1>
+        <h3 class = "sub_title">Sign Up</h3>
+        <div class = "signup_login_form_box">
+            <form action="/process_registration" method="POST">
+                <div class = "flash_error">
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                <p>{{message}}</p>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                </div>
+                <div class = "user_input">
+                    <label>Email</label>
+                    <input type="text" name="email"></div>
+                <div class = "user_input">
+                    <label>First Name</label>
+                    <input type="text" name="first_name"></div>
+                <div class = "user_input">
+                    <label>Last Name</label>
+                    <input type="text" name="last_name"></div>
+                <div class = "user_input">
+                    <label>Password</label>
+                    <input type="password" name="password"></div>
+                <div class = "user_input">
+                    <label id = "confirm_password">Confirm Password</label>
+                    <input type="password" name="confirm_password"></div>
+                <button class = "submit_button"><a>Submit</a></button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
